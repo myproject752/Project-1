@@ -6,7 +6,7 @@ from flask import Flask, render_template_string, request, jsonify
 
 app = Flask(__name__)
 
-# HTML Template as a string
+# HTML Template as a string (unchanged from your original)
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="en">
@@ -672,7 +672,6 @@ HTML_TEMPLATE = '''
 </html>
 '''
 
-# Routes
 @app.route('/')
 def index():
     return render_template_string(HTML_TEMPLATE)
@@ -925,4 +924,5 @@ def get_age_recommendations(product_info):
     return recommendations
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)  # Debug mode OFF for production
